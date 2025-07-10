@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Left with Overlay</title>
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
@@ -16,7 +15,6 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        /* Đặt wrapper cố định lên trên cùng */
         .wrapper {
             height: 100%;
             
@@ -26,7 +24,6 @@
             z-index: 4;
         }
 
-        /* Nút mở/đóng menu */
         .wrapper .menu-btn {
             position: fixed;
             color: white;
@@ -64,10 +61,9 @@
             transform: rotate(180deg);
         }
 
-        /* Sidebar (menubar) */
         #sidebar {
             background-color: #332f2c;
-            height: 100vh; /* Chiều cao toàn màn hình */
+            height: 100vh; 
             width: 270px;
             overflow: hidden;
             position: fixed;
@@ -131,7 +127,6 @@
             margin-right: 20px;
         }
 
-        /* Các icon mạng xã hội trong sidebar */
         #sidebar .list-items .icons {
             width: 100%;
             height: auto;
