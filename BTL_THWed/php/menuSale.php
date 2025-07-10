@@ -1,19 +1,15 @@
 <?php
-// Kết nối đến MySQL
-$servername = "localhost"; // Địa chỉ máy chủ
-$username = "root"; // Tên người dùng
-$password = ""; // Mật khẩu
-$dbname = "ql_webbanhang"; // Tên cơ sở dữ liệu
+$servername = "localhost"; 
+$username = "root"; 
+$password = ""; 
+$dbname = "ql_webbanhang"; 
 
-// Tạo kết nối
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Kiểm tra kết nối
 if ($conn->connect_error) {
     die("Kết nối thất bại: " . $conn->connect_error);
 }
 
-// Truy vấn lấy sản phẩm có loại là 'hàng mới', 'hàng bán chạy', 'giảm giá'
 $categories = ['hangmoi', 'hangbanchay', 'hanggiamgia'];
 ?>
 
@@ -31,14 +27,12 @@ $categories = ['hangmoi', 'hangbanchay', 'hanggiamgia'];
         padding: 0;
     }
 
-    /* Container cho các sản phẩm */
     .product-container {
         display: flex;
         flex-direction: column;
         margin-bottom: 20px;
     }
 
-    /* Danh sách sản phẩm */
     .product-list {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -47,7 +41,6 @@ $categories = ['hangmoi', 'hangbanchay', 'hanggiamgia'];
         padding: 20px;
     }
 
-    /* Item sản phẩm */
     .product-item {
         background-color: #fff;
         border: 1px solid #ddd;
@@ -60,7 +53,7 @@ $categories = ['hangmoi', 'hangbanchay', 'hanggiamgia'];
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 372px; /* Điều chỉnh chiều cao sản phẩm */
+        height: 372px;
     }
 
     .product-item:hover {
@@ -72,7 +65,7 @@ $categories = ['hangmoi', 'hangbanchay', 'hanggiamgia'];
         border-radius: 6px;
         margin-bottom: 8px;
         transition: transform 0.2s ease;
-        height: 170px; /* Chiều cao hình ảnh được điều chỉnh */
+        height: 170px; 
         object-fit: cover;
     }
 
@@ -80,7 +73,6 @@ $categories = ['hangmoi', 'hangbanchay', 'hanggiamgia'];
         transform: scale(1.03);
     }
 
-    /* Media queries để điều chỉnh bố cục */
     @media (max-width: 768px) {
         .product-list {
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -159,7 +151,6 @@ foreach ($categories as $category) {
     }
     echo "<div class='product-list'>";
 
-    // Truy vấn lấy tối đa 5 sản phẩm theo loại
     $sql = "SELECT * FROM sanpham WHERE loai = '$category' LIMIT 5";
     $result = $conn->query($sql);
     
