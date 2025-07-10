@@ -1,14 +1,12 @@
 <?php
-// Xử lý đăng nhập
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username']; // Lấy giá trị từ form đăng nhập
-    $password = $_POST['password']; // Lấy giá trị mật khẩu từ form
+    $username = $_POST['username'];
+    $password = $_POST['password']; 
 
-    // Kiểm tra thông tin đăng nhập từ cơ sở dữ liệu
-    if ($username === 'admin' && $password === '123456') { // Thay điều kiện bằng logic kiểm tra CSDL
+    if ($username === 'admin' && $password === '123456') { 
         session_start();
-        $_SESSION['username'] = $username; // Gán tên người dùng vào session
-        header("Location: home2.php"); // Điều hướng sau khi đăng nhập thành công
+        $_SESSION['username'] = $username; 
+        header("Location: home2.php"); 
     }
 }
 ?>
