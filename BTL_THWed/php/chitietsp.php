@@ -3,7 +3,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Kết nối cơ sở dữ liệu
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -14,12 +13,10 @@ if ($conn->connect_error) {
     die("Kết nối thất bại: " . $conn->connect_error);
 }
 
-// Lấy ID sản phẩm từ URL
 $idsp = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 $product = null;
 
 if ($idsp > 0) {
-    // Truy vấn thông tin sản phẩm
     $stmt = $conn->prepare("SELECT tensp, hinhanh, giasp, MoTa FROM sanpham WHERE idsp = ?");
     $stmt->bind_param("i", $idsp);
     $stmt->execute();
@@ -31,11 +28,9 @@ if ($idsp > 0) {
     $stmt->close();
 }
 
-// Xử lý logic cho số lượng sản phẩm
 $quantity = isset($_POST['quantity']) ? (int)$_POST['quantity'] : 1;
-$quantity = max($quantity, 1); // Đảm bảo số lượng tối thiểu là 1
+$quantity = max($quantity, 1); 
 
-// Xử lý khi nhấn nút tăng hoặc giảm số lượng
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action'])) {
         if ($_POST['action'] === 'increase') {
@@ -45,20 +40,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Xử lý thêm sản phẩm vào giỏ hàng
     if (isset($_POST['add_to_cart'])) {
         if (!isset($_SESSION['cart'])) {
             $_SESSION['cart'] = [];
         }
 
-        // Thêm sản phẩm với số lượng đã được cập nhật
         if (!isset($_SESSION['cart'][$idsp])) {
             $_SESSION['cart'][$idsp] = $quantity;
         } else {
             $_SESSION['cart'][$idsp] += $quantity;
         }
 
-        // Chuyển hướng sang trang giỏ hàng
         header("Location: giohang.php");
         exit();
     }
@@ -339,7 +331,6 @@ $conn->close();
 <?php if ($product): ?>
 <div class="container">
     <div class="product-gallery-and-details">
-        <!--Ảnh sản phẩm -->
         <div class="product-gallery">
             <img class="main-image" src="<?php echo htmlspecialchars($product['hinhanh']); ?>" alt="<?php echo htmlspecialchars($product['tensp']); ?>">
             <div class="thumbnail-row">
@@ -349,7 +340,6 @@ $conn->close();
             </div>
         </div>
 
-        <!--Tên sản phẩm và nút button -->
         <div class="product-details">
             <h1><?php echo htmlspecialchars($product['tensp']); ?></h1>
             <div class="reviews">★★★★★ (999 đánh giá)</div>
@@ -373,14 +363,12 @@ $conn->close();
             </div>
         </div>
     </div>
-    <!--Chi tiết sản phẩm -->
     <div class="product-details">
         <h2>Thông tin chi tiết</h2>
         <p class="short-description">
             <?php echo nl2br(htmlspecialchars($product['MoTa'])); ?>
         </p>       
     </div>
-    <!--đánh giá  -->
     <div class="reviews-section">
         <h2>Đánh giá sản phẩm</h2>
         <?php if (!empty($reviews)): ?>
