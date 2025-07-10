@@ -5,18 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slider PHP</title>
     <style>
-        /* Container bao quanh slider và container ảnh nhỏ */
         .carousel-container {
             background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
-    max-width: 100%; /* Đặt chiều rộng giới hạn cho container */
-    margin: auto; /* Căn giữa container chính */
+    max-width: 100%;
+    margin: auto; 
         }
 
-        /* Container ảnh nhỏ ở bên phải */
         .small-images-container {
             display: flex;
             margin-top: 150px;
@@ -25,7 +23,6 @@
             width: 400px;
         }
 
-        /* Ảnh nhỏ */
         .small-image {
             margin-left: 20px;
             margin-top: 10px;
@@ -40,7 +37,6 @@
             display: block;
         }
 
-        /* Container của Carousel */
         .carousel {
             margin-top: 200px;
             width: 700px;
@@ -49,7 +45,6 @@
             border-radius: 10px 10px 10px 10px;
         }
 
-        /* Phần Slide */
         .slides {
             display: flex;
             height: 400px;
@@ -57,7 +52,6 @@
             transition: transform 0.5s ease;
         }
 
-        /* Mỗi slide hình ảnh */
         .slide {
             min-width: 100%;
             height: 400px;
@@ -65,7 +59,6 @@
             box-sizing: border-box;
         }
 
-        /* Dấu chấm để điều hướng */
         .dots {
             text-align: center;
             margin-top: -25px;
@@ -87,7 +80,6 @@
         .dot:hover {
             background-color: #717171;
         }
-/* Nút điều hướng trái và phải */
 .prev, .next {
     cursor: pointer;
     position: absolute;
@@ -99,25 +91,24 @@
     color: white;
     font-weight: bold;
     font-size: 18px;
-    border-radius: 50%; /* Tạo nút hình tròn */
-    background-color: rgba(0, 0, 0, 0.2); /* Nền mờ cho nút */
+    border-radius: 50%; 
+    background-color: rgba(0, 0, 0, 0.2); 
     display: flex;
     justify-content: center;
     align-items: center;
     transition: background-color 0.3s ease;
     user-select: none;
-    z-index: 900; /* Đảm bảo nút điều hướng nằm trên slide */
+    z-index: 900; 
 }
 
 .prev {
-    left: 185px; /* Căn nút trái cách lề trái của slide */
+    left: 185px; 
 }
 
 .next {
-    right: 605px; /* Căn nút phải cách lề phải của slide */
+    right: 605px; 
 }
 
-/* Hiệu ứng khi di chuột qua nút */
 .prev:hover, .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
@@ -144,10 +135,7 @@
     ];
 ?>
 
-
-
 <div class="carousel-container">
-    <!-- Slider chính -->
     <div class="carousel">
         <div class="slides">
             <?php foreach ($sliderImages as $index => $image): ?>
@@ -157,12 +145,10 @@
             <?php endforeach; ?>
         </div>
 
-        <!-- Nút điều hướng -->
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
 
-    <!-- Container ảnh nhỏ bên phải -->
     <div class="small-images-container">
         <?php foreach ($smallImages as $index => $smallImage): ?>
             <div class="small-image">
@@ -172,7 +158,6 @@
     </div>
 </div>
 
-<!-- Dấu chấm điều hướng -->
 <div class="dots">
     <?php for ($i = 1; $i <= count($sliderImages); $i++): ?>
         <span class="dot" onclick="currentSlide(<?php echo $i; ?>)"></span>
@@ -183,17 +168,14 @@
     let slideIndex = 1;
     showSlides(slideIndex);
 
-    // Tự động chuyển slide sau mỗi 3 giây
     setInterval(() => {
         plusSlides(1);
     }, 3000);
 
-    // Điều khiển nút tới/lui
     function plusSlides(n) {
         showSlides(slideIndex += n);
     }
 
-    // Điều khiển bằng dấu chấm
     function currentSlide(n) {
         showSlides(slideIndex = n);
     }
