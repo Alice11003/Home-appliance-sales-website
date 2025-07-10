@@ -12,7 +12,6 @@ if ($conn->connect_error) {
     die("Kết nối thất bại: " . $conn->connect_error);
 }
 
-// Xử lý thêm sản phẩm vào giỏ hàng
 if (isset($_GET['add_to_cart'])) {
     $idsp = $_GET['add_to_cart'];
 
@@ -26,7 +25,6 @@ if (isset($_GET['add_to_cart'])) {
         $_SESSION['cart'][$idsp]++;
     }
 
-    // Thông báo khi thêm sản phẩm
     $_SESSION['message'] = "Bạn đã thêm vào giỏ hàng thành công!";
     header("Location: giohang.php");
     exit();
@@ -66,14 +64,13 @@ $result = $conn->query($sql);
             border-radius: 8px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        /* Khi di chuột vào sản phẩm */
+        
     .product:hover {
         transform: scale(1.05);
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
 
 
-    /* Khi di chuột vào ảnh sản phẩm */
     .product-image:hover {
         transform: scale(1.1);
     }
@@ -133,14 +130,13 @@ $result = $conn->query($sql);
             messageBox.style.display = 'block';
             setTimeout(() => {
                 messageBox.style.display = 'none';
-            }, 1000); // Hiển thị thông báo trong 1 giây
+            }, 1000); 
         }
     </script>
 </head>
 <body onload="<?php if (isset($_SESSION['message'])) { echo 'showMessage();'; unset($_SESSION['message']); } ?>">
     <div class="center-menu">
         
-        <!-- Thông báo nằm giữa danh sách sản phẩm -->
         <div id="messageBox" class="message-box"><?= $_SESSION['message'] ?? '' ?></div>
 
         <?php if ($result->num_rows > 0): ?>
