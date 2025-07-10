@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Header</title>
     <style>
-        /* Reset and basic styling */
+
         * { 
              margin: 0; 
              padding: 0; 
@@ -17,7 +17,6 @@
             background-color: #f7f7f7; 
             z-index: 1000;
         }
-        /* Main header container */
         .header-container {
             background: #E7717D;
             color: white;
@@ -29,7 +28,6 @@
             align-items: center;
         }
 
-        /* Top header row styling */
         .header-top {
             display: flex;
             justify-content: space-between;
@@ -58,7 +56,6 @@
             text-decoration: underline;
         }
 
-        /* Middle row styling for logo and search bar */
         .header-middle {
             display: flex;
             align-items: center;
@@ -69,7 +66,6 @@
             gap: 20px;
         }
 
-        /* Logo styling */
         .logo {
             display: flex;
             align-items: center;
@@ -94,7 +90,6 @@
     text-decoration: none; 
 }
 
-     /* Search bar styling */
      .search-bar {
             display: flex;
             align-items: center;
@@ -142,7 +137,6 @@
 }
 
 
-        /* Icon notification styling */
         .icon {
             position: relative;
             display: flex;
@@ -172,7 +166,6 @@
     position: relative;
     z-index: 100;
 }
-/* CSS để thay đổi màu chữ khi click vào các liên kết có id="click" */
 a#click {
     color: white;
     text-decoration: none;
@@ -184,13 +177,12 @@ a#click:focus {
     text-decoration: none; /
 }
 
-/* Kiểu cho menu chính */
 .main-menu {
-    background-color: #1c1c1c; /* Màu nền cho menu chính */
+    background-color: #1c1c1c; 
     padding: 0;
     margin: 0;
     width: 100%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bóng đổ nhẹ cho menu */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 .main-menu ul {
@@ -200,7 +192,6 @@ a#click:focus {
     text-align: center;
 }
 
-/* Kiểu cho các mục chính của menu */
 .main-menu > ul > li {
     display: inline-block;
     position: relative;
@@ -208,17 +199,16 @@ a#click:focus {
 
 .main-menu ul li a {
     display: block;
-    color: white; /* Màu chữ cho các mục chính */
+    color: white; 
     text-decoration: none;
     padding: 15px 20px;
     font-size: 16px;
 }
 
 .main-menu ul li a:hover {
-    background-color: #555; /* Màu nền khi di chuột vào các mục chính */
+    background-color: #555; 
 }
 
-/* Kiểu cho menu con (dropdown) */
 .main-menu ul.dropdown {
     display: none; 
     position: absolute;
@@ -238,19 +228,15 @@ a#click:focus {
     font-size: 14px;
 }
 
-/* Hiệu ứng hover cho các mục trong menu con */
 .main-menu ul.dropdown li a:hover {
     background-color: #666; 
 }
 
-/* Hiển thị menu con khi di chuột vào mục chính */
 .main-menu > ul > li:hover > ul.dropdown {
     display: block;
     opacity: 1;
 }
 
-
-/* Menu bên trái - ẩn mặc định */
 .menu-left {
     position: fixed;
     top: 0;
@@ -280,7 +266,6 @@ a#click:focus {
     background-color: #575757;
 }
 
-/* Khi menu hiển thị, chuyển menu sang vị trí hiển thị */
 .menu-left.active {
     left: 0;
 }
@@ -289,11 +274,8 @@ a#click:focus {
 </head>
 <body>
 
-    <!-- Header Container -->
     <div class="header-container">
-        <!-- Top Row -->
         <div class="header-top">
-            <!-- Left Section -->
             <div class="header-left">
                 <a href="../php/gioithieu.php" id="click">Giới thiệu</a>
                 <span>Follow chúng tôi</span>
@@ -301,22 +283,18 @@ a#click:focus {
                 <a href="https://www.instagram.com/daisyy1110/"><i class="iconn bi bi-instagram"></i></a>
             </div>
 
-            <!-- Right Section -->
             <div class="header-right">
                 <a href="../php/lienhe.php" id="click"><i class="iconn bi bi-question"></i>Liên hệ</a>
                 <a href="dangnhap.php" id="click"><i class="iconn bi bi-person-circle" ></i>  Đăng xuất</a>
             </div>
         </div>
 
-        <!-- Middle Row for Logo and Search Bar -->
         <div class="header-middle">
-            <!-- Logo -->
             <div class="logo">
                 <a href="../php/home.php"><img src="../image/logo.png" alt="Logo"></a>
                 <h2><span><a href="../php/home.php">TQT</a></span></h2>
             </div>
 
-            <!-- Search Bar -->
         <div class="search-bar">
             <form action="search.php" method="GET" style="display: flex; width: 100%;">
                 <input type="text" name="keyword" placeholder="Tìm kiếm sản phẩm bạn muốn">
@@ -324,14 +302,12 @@ a#click:focus {
             </form>
         </div>
             <button id="cart" onclick="window.location.href='../php/giohang.php';"><i class="bi bi-cart3"></i></button>
-        </div><!-- Navigation Links -->
+        </div>
         
         
 <nav class="main-menu">
-    <!-- Menu bên trái (sẽ ẩn mặc định) -->
     <div id="menu-left" class="menu-left">
         <ul>
-            <!-- Bao gồm menu từ tệp menu-left.php -->
             <?php include 'menu_left.php'; ?>
         </ul>
     </div>
@@ -359,10 +335,9 @@ a#click:focus {
 
     </div>
 <script>
-    // JavaScript để toggle menu
 document.getElementById("menu-toggle").addEventListener("click", function() {
     var menu = document.getElementById("menu-left");
-    menu.classList.toggle("active"); // Thêm/loại bỏ class "active"
+    menu.classList.toggle("active"); 
 });
 
 </script>
