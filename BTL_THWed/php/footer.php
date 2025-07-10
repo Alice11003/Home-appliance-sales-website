@@ -56,10 +56,8 @@
 </head>
 <body>
 
-<!-- Footer Section -->
 <footer>
     <div class="footer">
-        <!-- Website Info Section -->
         <div>
             <h3>THÔNG TIN WEBSITE</h3>
             <?php
@@ -81,7 +79,6 @@
             </div>
         </div>
 
-        <!-- Policies Section -->
         <div>
             <h3>SINH VIÊN THỰC HIỆN</h3>
             <ul>
@@ -91,7 +88,6 @@
             </ul>
         </div>
 
-        <!-- Support Section -->
         <div>
             <h3>NGÀY SINH</h3>
             <ul>
@@ -101,7 +97,6 @@
             </ul>
         </div>
 
-        <!-- Fanpage Section -->
         <div class="fanpage">
             <h3>FANPAGE</h3>
             <a href="https://www.facebook.com/huytung160703"><img src="../image/page.png" alt="Facebook"></a>
