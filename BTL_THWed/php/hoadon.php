@@ -29,7 +29,6 @@ $totalAmount = 0;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hóa Đơn Thanh Toán</title>
     <style>
-        /* CSS cho trang in hóa đơn */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
