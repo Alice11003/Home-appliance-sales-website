@@ -91,13 +91,10 @@
 
     <div class="intro-container">
         <b><h1>Giới thiệu về TQT Shop</h1></b>
-        
-        <!-- Hình ảnh giới thiệu -->
         <div class="image-container">
             <img src="../image/gioithieu1.webp" alt="Giới thiệu về FPT Shop">
         </div>
 
-        <!-- Phần nội dung giới thiệu -->
         <div class="content">
         <h2>1. TQT Shop - Thiên đường đồ gia dụng hiện đại</h2>
         <p> TQT Shop là điểm đến lý tưởng cho những ai tìm kiếm các sản phẩm gia dụng chất lượng cao, 
@@ -147,7 +144,6 @@
         </iframe>
     </div>
 
-    <!-- Nút Chỉ Đường -->
     <a href="https://www.google.com/maps/dir/?api=1&destination=218+Lĩnh+Nam,+Vĩnh+Hưng,+Hoàng+Mai,+Hà+Nội,+Việt+Nam" 
        target="_blank" 
        class="direction-button">
