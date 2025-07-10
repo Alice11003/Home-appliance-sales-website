@@ -5,19 +5,16 @@ $username = "root";
 $password = "";
 $dbname = "ql_webbanhang";
 
-// Kết nối tới cơ sở dữ liệu
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Kết nối thất bại: " . $conn->connect_error);
 }
 
-// Nhận dữ liệu từ form
 $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
 $category = isset($_GET['category']) ? $_GET['category'] : '';
 $min_price = isset($_GET['min_price']) ? (int)$_GET['min_price'] : 0;
 $max_price = isset($_GET['max_price']) ? (int)$_GET['max_price'] : 0;
 
-// Tạo câu truy vấn SQL động
 $sql = "SELECT * FROM sanpham WHERE tensp LIKE ?";
 $params = ["%$keyword%"];
 
@@ -48,8 +45,8 @@ $result = $stmt->get_result();
     <meta charset="UTF-8">
     <title>Kết quả tìm kiếm</title>
     <style>
-    /* Căn chỉnh sản phẩm trong bố cục */
-    .container {
+
+        .container {
         display: flex;
         margin-top: 20px;
     }
@@ -114,14 +111,14 @@ $result = $stmt->get_result();
     .sidebar form button:hover {
         background-color: #d4606d;
     }
-    /* Phần hiển thị sản phẩm */
+
     .products-container {
         display: flex;
         flex-wrap: wrap; 
         gap: 20px;  
         flex: 1;  
     }
-    /* CSS cho từng sản phẩm */
+
     .product {
         background-color: #fff;
         border-radius: 8px;
@@ -134,13 +131,11 @@ $result = $stmt->get_result();
         box-sizing: border-box;  
     }
 
-    /* Khi di chuột vào sản phẩm */
     .product:hover {
         transform: scale(1.05);
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
 
-    /* Cải thiện ảnh sản phẩm */
     .product-image {
         width: 100%;
         height: 200px;
@@ -149,12 +144,10 @@ $result = $stmt->get_result();
         transition: transform 0.3s ease-in-out;
     }
 
-    /* Khi di chuột vào ảnh sản phẩm */
     .product-image:hover {
         transform: scale(1.1);
     }
 
-    /* Tên sản phẩm */
     .product-name {
         font-size: 18px;
         font-weight: bold;
@@ -162,7 +155,6 @@ $result = $stmt->get_result();
         margin: 10px 0;
     }
 
-    /* Giá sản phẩm */
     .product-price {
         font-size: 16px;
         color: #FF3366; 
@@ -171,7 +163,6 @@ $result = $stmt->get_result();
         margin-bottom: 15px;
     }
 
-    /* Nút Thêm vào giỏ hàng */
     .add-to-cart {
         background-color: #555555;
         color: white;
@@ -184,18 +175,15 @@ $result = $stmt->get_result();
         transition: background-color 0.3s ease;
     }
 
-    /* Khi di chuột vào nút */
     .add-to-cart:hover {
         background-color: #D85C6E;
     }
 
-    /* Nút Thêm vào giỏ hàng khi bị vô hiệu hóa */
     .add-to-cart:disabled {
         background-color: #ccc;
         cursor: not-allowed;
     }
 
-    /* Thẻ a bao quanh ảnh */
     .product a {
         display: block;
         text-decoration: none;
@@ -208,7 +196,6 @@ $result = $stmt->get_result();
     <?php include 'banner.php'; ?>
 
     <div class="container">
-    <!-- Sidebar với bộ lọc tìm kiếm -->
     <div class="sidebar">
         <h3>Tìm kiếm nâng cao</h3>
         <form action="" method="get">
@@ -235,12 +222,10 @@ $result = $stmt->get_result();
         </form>
     </div>
 
-    <!-- Hiển thị kết quả tìm kiếm -->
     <div class="products-container">
         <?php
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                // Tạo đường link đến trang chi tiết sản phẩm
                 $productDetailUrl = "chitietsp.php?id=" . $row["idsp"];           
                 echo "<div class='product'>
                         <a href='" . $productDetailUrl . "'>
