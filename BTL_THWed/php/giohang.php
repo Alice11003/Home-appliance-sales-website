@@ -12,7 +12,6 @@ if ($conn->connect_error) {
     die("Kết nối thất bại: " . $conn->connect_error);
 }
 
-// Kiểm tra giỏ hàng
 $cart_items = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
 $products = [];
 if (!empty($cart)) {
@@ -26,7 +25,7 @@ if (!empty($cart)) {
         $products[] = $row;
     }
 }
-// Xử lý cập nhật số lượng sản phẩm khi nhấn nút + hoặc -
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['product_id'])) {
     $productId = $_POST['product_id'];
     $action = $_POST['action'];
@@ -155,7 +154,7 @@ if (!empty($cart_items)) {
     color: #fff;
     text-align: center;
     padding: 10px 0;
-    margin-top: auto;  /* Đẩy footer xuống cuối trang */
+    margin-top: auto;  
 }
     </style>
 </head>
@@ -194,7 +193,7 @@ if (!empty($cart_items)) {
                     </td>
                     <td><?= number_format($row['giasp'], 0, ',', '.') . ' VND'; ?></td>
                     <td><?= number_format($itemTotal, 0, ',', '.') . ' VND'; ?></td>
-                    <td> <!-- Cột chức năng -->
+                    <td> 
                         <form method="post">
                             <input type="hidden" name="product_id" value="<?= $row['idsp']; ?>">
                             <button type="submit" name="action" value="remove" style="background-color: #dc3545; color: white; border: none; padding: 6px 23px; border-radius: 4px; cursor: pointer;">
